@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Form handling
+    // Form handling with Formspree
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.querySelector('.submit-btn');
     
@@ -60,39 +60,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 Sending...
             `;
             
-            // Simulate form submission (replace with actual form handler)
-            setTimeout(() => {
-                // For GitHub Pages, you'll need to integrate with a service like Formspree
-                // For now, we'll show a success message and mailto link as fallback
-                
-                const subject = encodeURIComponent('Vybe Capital - New Project Inquiry');
-                const body = encodeURIComponent(`
-Hello,
-
-I'm interested in discussing my intelligence-driven application project.
-
-Email: ${email}
-Project Details: ${project}
-
-Looking forward to connecting!
-                `);
-                
-                const mailtoLink = `mailto:contact@vybecapital.com?subject=${subject}&body=${body}`;
-                
-                // Try to open email client
-                window.location.href = mailtoLink;
-                
-                // Show success message
-                showMessage('Thank you for your interest! Your email client should open with a pre-filled message. If not, please email us directly at contact@vybecapital.com', 'success');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button
+            // Submit to Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Success
+                    showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    // Error
+                    showMessage('Oops! There was a problem sending your message. Please try again.', 'error');
+                }
+            }).catch(error => {
+                // Network error
+                showMessage('Network error. Please check your connection and try again.', 'error');
+            }).finally(() => {
+                // Reset button state
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
-                
-            }, 1500);
+            });
         });
     }
 

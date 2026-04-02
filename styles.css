@@ -84,9 +84,12 @@ body {
     gap: 0.75rem;
 }
 
-.apply-nav-btn {
+.apply-nav-btn,
+a.apply-nav-btn,
+a.apply-nav-btn:visited,
+a.apply-nav-btn:active {
     background: linear-gradient(135deg, #6C2BD9 0%, #06D6A0 100%);
-    color: #ffffff;
+    color: #ffffff !important;
     border: none;
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
@@ -94,7 +97,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: none;
+    text-decoration: none !important;
     display: inline-block;
 }
 

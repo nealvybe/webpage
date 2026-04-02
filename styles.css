@@ -78,6 +78,31 @@ body {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.apply-nav-btn {
+    background: linear-gradient(135deg, #6C2BD9 0%, #06D6A0 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.apply-nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(108, 43, 217, 0.4);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -151,6 +176,23 @@ body {
 .cta-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-btn-apply {
+    background: linear-gradient(135deg, #6C2BD9 0%, #06D6A0 100%);
+    text-decoration: none;
+}
+
+.cta-btn-apply:hover {
+    box-shadow: 0 8px 30px rgba(108, 43, 217, 0.4);
 }
 
 .cta-arrow {
@@ -449,6 +491,15 @@ body {
     .get-in-touch-btn {
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
+    }
+
+    .apply-nav-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-buttons {
+        gap: 0.5rem;
     }
 }
 
